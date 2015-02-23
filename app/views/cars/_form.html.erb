@@ -1,0 +1,52 @@
+<%= form_for @car, :html => { :class => "form-horizontal car" } do |f| %>
+
+    <% if @car.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @car.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :make, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :make, :class => 'form-control' %>
+    </div>
+    <%= error_span(@car[:make]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :model, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :model, :class => 'form-control' %>
+    </div>
+    <%= error_span(@car[:model]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :string, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :string, :class => 'form-control' %>
+    </div>
+    <%= error_span(@car[:string]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :trim, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :trim, :class => 'form-control' %>
+    </div>
+    <%= error_span(@car[:trim]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            cars_path, :class => 'btn btn-default' %>
+
+<% end %>
