@@ -9,13 +9,12 @@
 <body>
   <div id='container'>
     <div id='user_nav'>
-      <% if user_signed_in? %>
-        Logged in as <%= current_user.username %><br/>
-        <%= link_to 'Edit profile', edit_user_registration_path %><br/>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %><br/>
+      <% if current_user %>
+        Logged in as <%= current_user.id %><br/>
+        <%= link_to 'Logout', authentication_path(current_user.id), method: :delete %><br/>
       <% else %>
-        <%= link_to 'Sign up', new_user_registration_path %>
-        <%= link_to 'Login', new_user_session_path %>
+        <%= link_to 'Sign up', new_user_path %>
+        <%= link_to 'Login', authentications_path %>
         <% end %>
       </div>
     </div>

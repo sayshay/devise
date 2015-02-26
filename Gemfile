@@ -9,7 +9,6 @@ gem 'omniauth-twitter'
 gem "omniauth-google-oauth2"
 gem 'omniauth-facebook'
 gem 'nifty-generators'
-gem 'devise'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'therubyracer'

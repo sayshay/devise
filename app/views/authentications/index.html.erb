@@ -34,8 +34,21 @@
 </a>
 
 <div class="clear"></div>
-<p>
-<strong>DOn't use these services?</strong>
-  <%= link_to 'Create an account', '/auth/identity/register'%>
-  <%= link_to 'Login', '/auth/identity'%> with a password
+<p>Or with your email<br/>
+  <h1>Log in</h1>
+  <%= form_tag sessions_path do %>
+    <div class='field'>
+      <%= label_tag :email %><br/>
+      <%= text_field_tag :email, params[:email] %>
+    </div>
+    <div class='field'>
+      <%= label_tag :password %><br/>
+      <%= password_field_tag :password %>
+    </div>
+    <div class='actions'><%= submit_tag 'Log In' %></div>
+  <% end %>
+  <br/>Dont have an account?
+  <br/> <%= link_to 'Subscribe', new_user_path %>
+
 </p>
+

@@ -8,24 +8,25 @@ class AuthenticationsController < ApplicationController
     authentication = Authentication.find_by(provider: auth['provider'], uid: auth['uid'])
     if authentication
       flash[:notice] = "Authentication successful."
-      sign_in_and_redirect(:user, authentication.user)
+      session[:user_id] = authentication.user.id
+      redirect_to cars_path
     elsif current_user
       current_user.authentications.create(:provider => auth['provider'], uid: auth['uid'])
       flash[:notice] = "Authentication successful."
-      redirect_to authentications_url
+      redirect_to cars_path
     else
       user = User.new
       user.authentications.build(:provider => auth['provider'], uid: auth['uid'])
       user.save!
       flash[:notice] = "Authentication successful."
-      sign_in_and_redirect(:user, user)
+      session[:user_id] = user.id
+      redirect_to cars_path
     end
   end
 
   def destroy
-    @authentication = current_user.authentications.find(params[:id])
-    @authentication.destroy
+    session[:user_id] = nil
     flash[:notice] = "Successfully destroyed authentication."
-    redirect_to authentications_url
+    redirect_to cars_path
   end
 end
