@@ -7,8 +7,10 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     user = User.find_by(uid: auth.uid)
+    p '************************'
+    p auth.info
     if user.nil?
-      user = User.create(provider: auth.provider, uid: auth.uid, username: auth.info.nickname)
+      user = User.create(provider: auth.provider, uid: auth.uid, username: auth.info.name)
     end
     user
   end
