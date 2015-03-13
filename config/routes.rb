@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'cars#index'
+  delete 'delete_all' => 'messages#delete_all', as: :delete_all
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
