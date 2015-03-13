@@ -13,6 +13,8 @@ gem 'devise'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
+gem 'private_pub'
+gem 'thin'
 # Use sqlite3 as the database for Active Record
 
 # Use SCSS for stylesheets

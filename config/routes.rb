@@ -4,6 +4,7 @@ Rails.application.routes.draw do
         controllers: { :omniauth_callbacks => "omniauth_callbacks"}
 
   resources :cars
+  resources :messages
   resources :authentications
 
   # The priority is based upon order of creation: first created -> highest priority.
