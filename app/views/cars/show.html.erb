@@ -23,3 +23,19 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+<center>
+<h1>Chat</h1>
+
+<ul id="chat">
+  <%= render @messages %>
+</ul>
+
+<%= form_for Message.new, remote: true do |f| %>
+  <%= f.hidden_field :car_id, :value => @car.id %>
+  <%= f.text_field :content %>
+  <%= f.submit "Send" %>
+<% end %>
+<%= current_user.id%>
+<%= subscribe_to "/messages/new/#{@car.id}" %>
+<%= link_to 'Delete ALL', delete_all_path, method: :delete%>
+</center>

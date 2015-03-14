@@ -1,4 +1,4 @@
-<% publish_to '/messages/new/23' do %>
+<% publish_to "/messages/new/#{@channel}" do %>
   $("#chat").append("<%= j render(@message) %>");
 <% end %>
 $("#new_message")[0].reset();

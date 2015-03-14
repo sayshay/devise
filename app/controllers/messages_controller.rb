@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   end
 
   def create
+    @channel = params[:message][:car_id]
     @message = Message.create!(message_params)
   end
 
@@ -15,6 +16,6 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-      params.require(:message).permit(:content)
+      params.require(:message).permit(:content, :car_id)
     end
 end

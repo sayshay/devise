@@ -11,6 +11,7 @@ class CarsController < ApplicationController
   # GET /cars/1
   # GET /cars/1.json
   def show
+    @messages = Message.where(car_id: @car.id)
   end
 
   # GET /cars/new
